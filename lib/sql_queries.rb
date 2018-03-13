@@ -17,11 +17,9 @@ WHERE users.id = pledges.user_id GROUP BY users.id ORDER BY users.name;"
 end
 
 def selects_the_titles_and_amount_over_goal_of_all_projects_that_have_met_their_funding_goal
-"SELECT projects.title, SUM(pledges.amount) - SUM(projects.funding_goal) FROM projects, pledges
-WHERE SUM(pledges.amount) >= SUM(projects.funding_goal);"
-SELECT projects.title, (SUM(pledges.amount) - projects.funding_goal) FROM projects, pledges
+"SELECT projects.title, (SUM(pledges.amount) - projects.funding_goal) FROM projects, pledges
 WHERE projects.id = pledges.project_id
-GROUP BY projects.id HAVING (SUM(pledges.amount) > SUM(projects.funding_goal));
+GROUP BY projects.id HAVING SUM(pledges.amount) > SUM(projects.funding_goal);""
 
 end
 
