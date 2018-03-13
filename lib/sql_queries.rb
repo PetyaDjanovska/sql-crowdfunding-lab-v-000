@@ -22,6 +22,7 @@ WHERE SUM(pledges.amount) >= SUM(projects.funding_goal);"
 SELECT projects.title, SUM(pledges.amount) - projects.funding_goal FROM projects, pledges
 WHERE projects.id = pledges.project_id
 GROUP BY projects.id;
+
 end
 
 def selects_user_names_and_amounts_of_all_pledges_grouped_by_name_then_orders_them_by_the_amount_and_users_name
