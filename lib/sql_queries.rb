@@ -21,7 +21,7 @@ def selects_the_titles_and_amount_over_goal_of_all_projects_that_have_met_their_
 WHERE SUM(pledges.amount) >= SUM(projects.funding_goal);"
 SELECT projects.title, (SUM(pledges.amount) - projects.funding_goal) FROM projects, pledges
 WHERE projects.id = pledges.project_id
-GROUP BY projects.id HAVING SUM(pledges.amount) > SUM(projects.funding_goal);
+GROUP BY projects.id HAVING (SUM(pledges.amount) > SUM(projects.funding_goal));
 
 end
 
